@@ -14,8 +14,4 @@ export default [
 	{path: 'flyerlist',component: flyerlist,name:'传单列表'},
 	{path: 'flyerdetail',component: flyerdetail,name:'传单详情',hidden:true},	
 
-
-
-
-
 ];
