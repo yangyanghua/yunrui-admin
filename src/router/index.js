@@ -28,48 +28,18 @@ export default new Router({
     {
         path: '/',
         component: Home,
-        name: '用户管理',
+        name: '首页',
+        redirect: '/index',
         iconCls: 'el-icon-message',//图标样式class
         children: [
 			...userRoutes,
-        ]
-    },
-    {
-        path: '/',
-        component: Home,
-        name: '控制台',
-        iconCls: 'el-icon-message',//图标样式class
-        children: [
 			...console,
-        ]
-    },
-    {
-        path: '/',
-        component: Home,
-        name: '活动管理',
-        iconCls: 'el-icon-message',//图标样式class
-        children: [
 			...activitys,
-        ]
-    },
-    {
-        path: '/',
-        component: Home,
-        name: '系统管理',
-        iconCls: 'el-icon-message',//图标样式class
-        children: [
 			...system,
-        ]
-    },
-    {
-        path: '/',
-        component: Home,
-        name: '销售',
-        iconCls: 'el-icon-message',//图标样式class
-        children: [
 			...sales,
         ]
     },
+
     {
         path: '*',
         hidden: true,

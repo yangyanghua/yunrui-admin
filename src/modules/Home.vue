@@ -22,7 +22,7 @@
 					<template v-for="(item,index) in navdata">
 						<el-submenu :index="index+''" v-if="!item.leaf">
 							<template slot="title"><i :class="item.iconCls"></i>{{item.title}}</template>
-							<el-menu-item v-for="(child,index) in item.children" :index="String(child.id)" :key="child.id">{{child.title}}</el-menu-item>
+							<el-menu-item v-for="(child,index) in item.children" :index="String(child.id)" :key="child.id" @click="test(child.title)"  >{{child.title}}</el-menu-item>
 						</el-submenu>
 						<!--<el-menu-item v-if="item.leaf&&item.children.length>0" :index="item.children[0].path"><i :class="item.iconCls"></i>{{item.children[0].name}}</el-menu-item>-->
 					</template>
@@ -63,6 +63,9 @@ import {navigation_getAll}	from '@/common/service/home.js';
 			}
 		},
 		methods: {
+			test(name){
+				this.$router.push({name:name})
+			},
 			_navigation_getAll(){
 				
 				navigation_getAll().then((res)=>{

@@ -11,7 +11,7 @@ export default [
 	{path: 'userdetail',component: userdetail,name:'用户详情',hidden:true},
 	{path: 'vcardlist',component: vcardlist,name:'名片列表'},
 	{path: 'vcarddetail',component: vcarddetail,name:'名片详情',hidden:true},
-	{path: 'flyerlist',component: flyerlist,name:'传单列表'},
+	{path: 'flyerlist',component: flyerlist,name:' 传单列表'},
 	{path: 'flyerdetail',component: flyerdetail,name:'传单详情',hidden:true},	
 
 ];
