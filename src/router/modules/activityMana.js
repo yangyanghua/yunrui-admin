@@ -1,5 +1,8 @@
-import activity from '@/modules/activityMana/index.vue';
-export default [
-	{path: 'activity',component: activity,name:'活动管理'},
 
+import specActivity from '@/modules/activityMana/components/specActivity/index.vue';
+import specActDetail from '@/modules/activityMana/components/specActivity/detail.vue';
+
+export default [
+	{path: 'specActivity',component: specActivity,name:'专场活动'},
+	{path: 'specActivity/detail',component: specActDetail,name:'新增/编辑活动'},
 ];

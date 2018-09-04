@@ -9,26 +9,39 @@
 	          </el-form-item>  
 	          <el-form-item>
 	            <el-button type="primary" size="medium" @click="search" icon="el-icon-search" >搜索</el-button>
+	            <el-button type="primary" size="medium" @click="$router.push({path:'/specActivity/detail'})" icon="el-icon-search" >新建展会</el-button>
+	            
+	            
 	          </el-form-item>
 	        </el-form>			
 		</div>
 		<div class="tableContent">
-		  <el-table :data="tableData" border style="width: 90%">
-		    <el-table-column  prop="id" width="80" label="ID" >
-		    </el-table-column>
-		    <el-table-column  prop="descr" label="图片">
+		  <el-table :data="tableData" border style="width: 90%">		    
+		    <el-table-column  prop="id" label="ID" width="80" >	
+			</el-table-column>
+		    <el-table-column  prop="name" label="展会名称">
+			</el-table-column>
+		    <el-table-column  prop="companyMain" label="图片">
 		      <template slot-scope="scope">
 			        <img v-if="scope.row.images" :src="scope.row.images.split(',')[0]" style="width: 80px; height: 80px;" />
 			        <p v-else style="color: #666;">无图片</p>
 		      </template>			    	
-			</el-table-column>		    
-		    
-		    <el-table-column  prop="descr" label="文字内容">	
+			</el-table-column>			
+		    <el-table-column label="联系人">
+		      <template slot-scope="scope">
+			        <p >{{scope.row.contact.realname}}</p>
+		      </template>		    	
 			</el-table-column>
-		    <el-table-column  prop="price" label="价格（元）">
+		    <el-table-column  label="地址">
+		      <template slot-scope="scope">
+			        <p >{{scope.row.address.province}}，{{scope.row.address.city}}，{{scope.row.address.district}}，{{scope.row.address.details}}</p>
+		      </template>			    	
 			</el-table-column>
-			
-		    <el-table-column  prop="servStatus" label="状态">
+		    <el-table-column  prop="enterPay" label="参展费（云贝）" >
+			</el-table-column>			
+		    <el-table-column  prop="startTime" label="时间" width="180">
+			</el-table-column>	
+		    <el-table-column  prop="status" label="状态" width="80">
 			</el-table-column>
 	        
 		    <el-table-column  label="操作">
@@ -56,7 +69,7 @@
 
 <script>
 
-import {leafletList} from '@/common/service/user.js'
+import {SpecialActivity} from '@/common/service/activityMana.js'
 	
   export default {
     data() {
@@ -79,8 +92,8 @@ import {leafletList} from '@/common/service/user.js'
 
     },
     methods: {
-     _leafletList(opt){
-     	leafletList(opt).then((res)=>{
+     _SpecialActivity(opt){
+     	SpecialActivity(opt).then((res)=>{
 				this.tableData = res.content;
 				this.total = res.totalElements; 
      	}).catch((res)=>{
@@ -92,7 +105,7 @@ import {leafletList} from '@/common/service/user.js'
      },
      search(){
 		this.searchForm.page = 0;
-		this._leafletList(this.searchForm);     	
+		this._SpecialActivity(this.searchForm);     	
      },
 	 handleClick(row){
 	 	// this.$router.push({ path: '/userdetail' });
@@ -101,16 +114,16 @@ import {leafletList} from '@/common/service/user.js'
         console.log(`每页 ${val} 条`);
         this.searchForm.size = val
 		this.searchForm.page = 0;
-		this._leafletList(this.searchForm);
+		this._SpecialActivity(this.searchForm);
       },
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
 		this.searchForm.page = val-1;
-		this._leafletList(this.searchForm);        
+		this._SpecialActivity(this.searchForm);        
       }	
     },
     mounted(){
-    	this._leafletList(this.searchForm);
+    	this._SpecialActivity(this.searchForm);
     }
   }
 </script>
