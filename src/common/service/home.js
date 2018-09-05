@@ -11,3 +11,18 @@ export const  navigation_getAll =(params={}) =>{
 } 
 
 
+export const  login =(params={}) =>{
+	
+    return http.post(api.login,qs.stringify(params),{
+      headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+      }})		
+} 
+
+export const  logout =(params={}) =>{
+	
+    return http.post(api.logout,qs.stringify(params),{
+      headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+      }})		
+} 

@@ -8,7 +8,7 @@
 				<el-dropdown trigger="hover">
 					<span class="el-dropdown-link userinfo-inner"><img :src="sysUserAvatar" /> {{sysUserName}}</span>
 					<el-dropdown-menu slot="dropdown">
-						<el-dropdown-item>设置</el-dropdown-item>
+						
 						<el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
 					</el-dropdown-menu>
 				</el-dropdown>
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import {navigation_getAll}	from '@/common/service/home.js';
+import {navigation_getAll,logout}	from '@/common/service/home.js';
 	export default {
 		data() {
 			return {
@@ -59,51 +59,63 @@ import {navigation_getAll}	from '@/common/service/home.js';
 				collapsed:false,
 				sysUserName: '',
 				sysUserAvatar: '',
-				navdata:[],
-			}
+navdata: [],
+}
+},
+methods: {
+		test(name) {
+			this.$router.push({
+				name: name
+			})
 		},
-		methods: {
-			test(name){
-				this.$router.push({name:name})
-			},
-			_navigation_getAll(){
-				
-				navigation_getAll().then((res)=>{
-					
-					this.navdata = res;
-					
-				}).catch((res)=>{
-					this.$message({
-						type:'error',
-						message:res.message
-					})
-					
+		_navigation_getAll() {
+
+			navigation_getAll().then((res) => {
+
+				this.navdata = res;
+
+			}).catch((res) => {
+				this.$message({
+					type: 'error',
+					message: res.message
 				})
-				
-			},
-			handleopen() {
-				//console.log('handleopen');
-			},
-			handleclose() {
-				//console.log('handleclose');
-			},
-			handleselect: function (a, b) {
-			},
-			//退出登录
-			logout: function () {
-				var _this = this;
-				this.$confirm('确认退出吗?', '提示', {
-					//type: 'warning'
-				}).then(() => {
+
+			})
+
+		},
+		handleopen() {
+			//console.log('handleopen');
+		},
+		handleclose() {
+			//console.log('handleclose');
+		},
+		handleselect: function(a, b) {},
+		//退出登录
+		logout: function() {
+			var _this = this;
+			this.$confirm('确认退出吗?', '提示', {
+
+				type: 'warning'
+			}).then(() => {
+				logout().then((res) => {
 					sessionStorage.removeItem('user');
 					_this.$router.push('/login');
-				}).catch(() => {
+				}).catch((res) => {
 
-				});
+					this.$message({
 
+						type: 'error',
+						message: res.message
 
-			},
-			//折叠导航栏
+					})
+
+				})
+
+			}).catch(() => {
+
+			});
+
+		},//折叠导航栏
 			collapse:function(){
 				this.collapsed=!this.collapsed;
 			},
@@ -116,8 +128,8 @@ import {navigation_getAll}	from '@/common/service/home.js';
 			var user = sessionStorage.getItem('user');
 			if (user) {
 				user = JSON.parse(user);
-				this.sysUserName = user.name || '';
-				this.sysUserAvatar = user.avatar || '';
+				this.sysUserName = user.nickname || '';
+				this.sysUserAvatar = user.photo || '';
 			}
 
 		}

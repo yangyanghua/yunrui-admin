@@ -8,7 +8,7 @@ import console from './modules/console.js'
 import activitys from './modules/activityMana.js' 
 import system from './modules/system.js' 
 import sales from './modules/sales.js' 
-
+import agent from './modules/agent.js' 
 
 Vue.use(Router)
 export default new Router({
@@ -37,6 +37,7 @@ export default new Router({
 			...activitys,
 			...system,
 			...sales,
+			...agent
         ]
     },
 

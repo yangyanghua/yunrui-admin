@@ -17,34 +17,21 @@ var currentHost = location.host;
 
 
 const getToken = () => {
-  return JSON.parse(localStorage.getItem('user'));
+  return JSON.parse(sessionStorage.getItem('user'));
 };
 let http = axios.create({
   baseURL: httpService,
-  //   headers:{
-  //     'Content-Type':'application/x-www-form-urlencoded'
-  // },
-  //   transformRequest: [function (data) {
-  //     data = Qs.stringify(data);
-  //     return data;
-  // }],
-  // withCredentials: true //加了这段就可以跨域了
+
 });
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 
 http.interceptors.request.use(function (config) {
   // Do something before request is sent 
 	NProgress.start();
-//let Token = getToken() ? getToken().token : '';
+
   //config.headers.Authorization = Token;
-    // let storeId = '';
-  // let params = {
-  //   storeId
-  // };
-  // config.params = Object.assign(config.params || {}, params);
-  
- // let accessToken = getToken() ? getToken().accessToken : '';
-  let params = {};
+  let accessToken = getToken() ? getToken().token : '';
+  let params = {token:accessToken};
   config.params = Object.assign(config.params || {}, params);
   return config;
 });
