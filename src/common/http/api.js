@@ -15,6 +15,9 @@ export const SpecialActivity = '/api/yr/api/admin/activity/SpecialActivity/page'
 export const SpecialActLeaflet = '/api/yr/api/admin/activity/SpecialActivity/leaflet/page';//专场活动传单
 export const addSpecialActivity = '/api/yr/api/admin/activity/SpecialActivity/save';//创建专场活动
 export const getSpecialActivity = '/api/yr/api/admin/activity/SpecialActivity/get';//获取展会详情
+export const RegularActivity = '/api/yr/api/admin/activity/RegularActivity/get';//平台活动列表
+export const RegularActivitySave = '/api/yr/api/admin/activity/RegularActivity/save';//保存平台活动列表
+
 
 //代理商模块
 export const getAgentList = '/api/yr/api/admin/agent/page';//获取代理商列表

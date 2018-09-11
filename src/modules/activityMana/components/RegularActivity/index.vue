@@ -46,7 +46,7 @@
 	        
 		    <el-table-column  label="操作">
 		      <template slot-scope="scope">
-		        <el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
+		        <el-button @click="handleClick(scope.row)" type="text" size="small">查看详情</el-button>
 		      </template>		    		
 		    </el-table-column>
 		  </el-table>			
@@ -69,7 +69,7 @@
 
 <script>
 
-import {SpecialActivity} from '@/common/service/activityMana.js'
+import {RegularActivity} from '@/common/service/activityMana.js'
 	
   export default {
     data() {
@@ -92,8 +92,8 @@ import {SpecialActivity} from '@/common/service/activityMana.js'
 
     },
     methods: {
-     _SpecialActivity(opt){
-     	SpecialActivity(opt).then((res)=>{
+     _RegularActivity(opt){
+     	RegularActivity(opt).then((res)=>{
 				this.tableData = res.content;
 				this.total = res.totalElements; 
      	}).catch((res)=>{
@@ -105,25 +105,25 @@ import {SpecialActivity} from '@/common/service/activityMana.js'
      },
      search(){
 		this.searchForm.page = 0;
-		this._SpecialActivity(this.searchForm);     	
+		this._RegularActivity(this.searchForm);     	
      },
 	 handleClick(row){
-	 	 this.$router.push({path:'/specActivity/detail',query:{id:row.id}})
+	 	// this.$router.push({ path: '/userdetail' });
 	 },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
         this.searchForm.size = val
 		this.searchForm.page = 0;
-		this._SpecialActivity(this.searchForm);
+		this._RegularActivity(this.searchForm);
       },
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
 		this.searchForm.page = val-1;
-		this._SpecialActivity(this.searchForm);        
+		this._RegularActivity(this.searchForm);        
       }	
     },
     mounted(){
-    	this._SpecialActivity(this.searchForm);
+    	this._RegularActivity(this.searchForm);
     }
   }
 </script>
