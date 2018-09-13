@@ -51,4 +51,45 @@ export const  RegularActivitySave =(params={}) =>{
       }})		
 } 
 
+export const  getArea =(params={}) =>{
+	
+    return http.get(api.getArea,qs.stringify(params),{
+      headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+      }})		
+} 
+export const  upload =(params={}) =>{
+	
+    return http.post(api.upload,params,{
+	    headers:{
+	          'Content-Type': 'multipart/form-data'
+	    }
+      
+    })
+} 
+
+
+export const  RedPacketList =(params={}) =>{
+	
+    return http.post(api.RedPacketList,qs.stringify(params),{
+      headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+      }})		
+} 
+
+export const  RedPacketRefund =(params={}) =>{
+	
+    return http.post(api.RedPacketRefund,qs.stringify(params),{
+      headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+      }})		
+} 
+
+export const  RedPacketSave =(params={}) =>{
+	
+    return http.post(api.RedPacketSave,qs.stringify(params),{
+      headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+      }})		
+} 
 

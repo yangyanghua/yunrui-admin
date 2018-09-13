@@ -1,4 +1,9 @@
 
+//基础接口
+export const getArea = '/api/yr/api/area/list';
+export const upload = '/api/yr/api/upload/admin';
+
+
 //导航管理
 export const navigation_getAll = '/api/yr/api/admin/menu/list';
 export const login = '/api/yr/api/admin/login';
@@ -12,12 +17,14 @@ export const leafletList = '/api/yr/api/admin/leaflet/page';//传单列表
 
 //活动管理
 export const SpecialActivity = '/api/yr/api/admin/activity/SpecialActivity/page';//专场活动列表
-export const SpecialActLeaflet = '/api/yr/api/admin/activity/SpecialActivity/leaflet/page';//专场活动传单
-export const addSpecialActivity = '/api/yr/api/admin/activity/SpecialActivity/save';//创建专场活动
+export const SpecialActLeaflet = '/api/yr/api/admin/activity/SpecialActivity/leaflet/page';//展会活动传单
+export const addSpecialActivity = '/api/yr/api/admin/activity/SpecialActivity/save';//创建展会活动
 export const getSpecialActivity = '/api/yr/api/admin/activity/SpecialActivity/get';//获取展会详情
 export const RegularActivity = '/api/yr/api/admin/activity/RegularActivity/get';//平台活动列表
 export const RegularActivitySave = '/api/yr/api/admin/activity/RegularActivity/save';//保存平台活动列表
-
+export const RedPacketList = '/api/yr/api/admin/activity/RedPacket/page';//红包活动列表
+export const RedPacketRefund = '/api/yr/api/admin/activity/RedPacket/refund';//红包活动退款
+export const RedPacketSave = '/api/yr/api/admin/activity/RedPacket/save';//新增编辑红包活动
 
 //代理商模块
 export const getAgentList = '/api/yr/api/admin/agent/page';//获取代理商列表

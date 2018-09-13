@@ -29,9 +29,10 @@ http.interceptors.request.use(function (config) {
   // Do something before request is sent 
 	NProgress.start();
 
-  //config.headers.Authorization = Token;
+  //config.headers.Token = Token;
   let accessToken = getToken() ? getToken().token : '';
-  let params = {token:accessToken};
+  config.headers.token = accessToken;
+  let params = {};
   config.params = Object.assign(config.params || {}, params);
   return config;
 });

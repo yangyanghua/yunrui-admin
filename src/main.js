@@ -11,7 +11,7 @@ import 'nprogress/nprogress.css'
 import router from './router'
 import VueResource from 'vue-resource'
 import './assets/css/ele.scss'
-
+import Format from '@/common/js/time.js'
 Vue.use(VueResource);
 Vue.use(ElementUI)
 Vue.use(VueRouter)
