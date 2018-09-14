@@ -6,7 +6,7 @@ import RegularActivity from '@/modules/activityMana/components/RegularActivity/i
 import RegularActDetail from '@/modules/activityMana/components/RegularActivity/detail.vue';
 
 import redActivity from '@/modules/activityMana/components/redActivity/index.vue';
-import redActDetail from '@/modules/activityMana/components/redActivity/detail.vue';
+
 
 export default [
 	{path: 'specActivity',component: specActivity,name:'专场活动'},
@@ -14,5 +14,5 @@ export default [
 	{path: 'RegularActivity',component: RegularActivity,name:'平台活动'},
 	{path: 'RegularActivity/detail',component: RegularActDetail,name:'新增/编辑平台活动'},	
 	{path: 'redActivity',component: redActivity,name:'红包活动'},
-	{path: 'redActivity/detail',component: redActDetail,name:'新增/编辑红包活动'},		
+	
 ];
