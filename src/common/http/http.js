@@ -44,12 +44,17 @@ http.interceptors.response.use(function (response) {
     return response.data.data;
 
   }
-
   let tipMessage = {
     code: data.code,
     message: data.message
   }
   return Promise.reject(tipMessage);
+  
+  
+  
+  
+  
+  
 }, function (error) {
   let tipMessage = {
     code: '-1',

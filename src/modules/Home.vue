@@ -17,8 +17,8 @@
 		<el-col :span="24" class="main">
 			<aside :class="collapsed?'menu-collapsed':'menu-expanded'">
 				<!--导航菜单-->
-				<el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
-					 unique-opened router v-show="!collapsed">
+				<el-menu  class="el-menu-vertical-demo"   @select="handleselect"
+					 unique-opened  v-show="!collapsed">
 					<template v-for="(item,index) in navdata">
 						<el-submenu :index="index+''" v-if="!item.leaf">
 							<template slot="title"><i :class="item.iconCls"></i>{{item.title}}</template>
@@ -89,7 +89,9 @@ methods: {
 		handleclose() {
 			//console.log('handleclose');
 		},
-		handleselect: function(a, b) {},
+		handleselect: function(a, b) {
+			
+		},
 		//退出登录
 		logout: function() {
 			var _this = this;

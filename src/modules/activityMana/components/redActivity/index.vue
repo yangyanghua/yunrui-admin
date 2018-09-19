@@ -97,7 +97,7 @@
 				</el-form>
 		  <span slot="footer" class="dialog-footer">
 		    <el-button @click="dialogVisible = false">取 消</el-button>
-		   <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+		   <el-button type="primary" @click="submitForm('ruleForm')">立即保存</el-button>
 		  </span>
 		</el-dialog>
 
@@ -209,12 +209,28 @@ import {RedPacketList,RedPacketRefund,RedPacketSave} from '@/common/service/acti
 	  	this.dialogVisible = true;
 	  	this.diaTitle = '新增平台红包';
 	  	this.ruleForm.id = '';
-	  	this.resetForm('ruleForm');
+        this.ruleForm = {
+			userId:'',//integer(query)	用户id
+			sendName:'', //*string(query)	红包发送者名称
+			name:'',// *string(query)	活动名称
+			wishing:'',// *string(query)	红包祝福语
+			totalAmount:'',// *number(query)	红包总金额
+			totalNum:'',// *integer(query)	红包发放总人数
+			remark:'',// string(query)	备注
+			sendScope:'2',// *string(query)	发放范围 0针对单个名片或传单 1针对区域名片或传单 2全平台	
+			subjectType:'',// *integer(query)	活动类型 0名片活动 1传单活动
+			subjectId:'',//integer(query)	sendScope为0时，名片或传单ID	
+			areaCode:'',//string(query)	sendScope为1时，的地区号
+			ruleShare:'',// *	boolean(query)	红包领取规则-是否分享可领取
+			ruleTrade:'',// *boolean(query)		红包领取规则-是否交易可领取        	
+        };	  	
 	  },
 	  toEdit(row){
-	  	this.ruleForm = row;
+	  	this.ruleForm = Object.assign({},row);
 	  	this.ruleForm.sendScope = String(this.ruleForm.sendScope);
 	  	this.ruleForm.subjectType = String(this.ruleForm.subjectType);
+	  	this.ruleForm.totalAmount  =  String(this.ruleForm.totalAmount);
+	  	this.ruleForm.totalNum  =  String(this.ruleForm.totalNum);
 	  	this.dialogVisible = true;
 	  	this.diaTitle = '编辑红包';	  	
 	  },
@@ -265,10 +281,20 @@ import {RedPacketList,RedPacketRefund,RedPacketSave} from '@/common/service/acti
       _RedPacketSave(opt){
       	
       	RedPacketSave(opt).then((res)=>{
-		     		this.$message({
-		     			type:'success',
-		     			message:'新增成功'
-		     		})	      		
+
+		     		if(opt.id){
+			     		this.$message({
+			     			type:'success',
+			     			message:'编辑成功'
+			     		});		     			
+		     		}else{
+			     		this.$message({
+			     			type:'success',
+			     			message:'新增成功'
+			     		});			     			
+		     		}
+		     		
+		     		
       		this.dialogVisible = false;
       	    this._RedPacketList(this.searchForm);	
       	}).catch((res)=>{
@@ -294,9 +320,7 @@ import {RedPacketList,RedPacketRefund,RedPacketSave} from '@/common/service/acti
 		this.searchForm.page = 0;
 		this._RedPacketList(this.searchForm);     	
      },
-	 handleClick(row){
-	 	// this.$router.push({ path: '/userdetail' });
-	 },
+
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
         this.searchForm.size = val

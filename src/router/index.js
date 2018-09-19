@@ -4,11 +4,12 @@ import Login from '../modules/Login.vue'
 import NotFound from '../modules/404.vue'
 import Home from '../modules/Home.vue'
 import userRoutes from './modules/userMana.js' 
-import console from './modules/console.js' 
 import activitys from './modules/activityMana.js' 
 import system from './modules/system.js' 
 import sales from './modules/sales.js' 
 import agent from './modules/agent.js' 
+import message from './modules/message.js' 
+import financial from './modules/financial.js' 
 
 Vue.use(Router)
 export default new Router({
@@ -33,11 +34,12 @@ export default new Router({
         iconCls: 'el-icon-message',//图标样式class
         children: [
 			...userRoutes,
-			...console,
 			...activitys,
 			...system,
 			...sales,
-			...agent
+			...agent,
+			...message,
+			...financial
         ]
     },
 
@@ -47,23 +49,6 @@ export default new Router({
         redirect: { path: '/404' }
     }    
     
-//  {
-//    path: '/',
-//    component: pageWapper,
-//    redirect: '/index',
-//    children: [
-//      ...indexRoutes,
-//      ...managementRoutes,
-//      ...editRoutes,     
-//      ...homepageRoutes, 
-//      ...productRoutes,
-//      ...authorityManagement,
-//      ...goodsGroup,
-//      ...systemRoutes,
-//      ...appHomeRoutes,
-//    ]
-//  },
-//  { path: "*", redirect: '/index' },
 
   ]
 })

@@ -45,14 +45,14 @@ import {login}	from '@/common/service/home.js';
       handleSubmit2(ev) {
         this.$refs['ruleForm2'].validate((valid) => {
           if (valid) {
+          	this.logining = true;
 								login(this.ruleForm2).then((res)=>{
 									sessionStorage.setItem('user', JSON.stringify(res));
 									 this.$router.push({ path: '/userlist' });
-									
+									 this.logining = false;
 								}).catch((res)=>{
-									
+									this.logining = false;
 									this.$message({
-										
 										type:'error',
 										message:res.message
 										
@@ -71,7 +71,20 @@ import {login}	from '@/common/service/home.js';
                
 
       }
+    },
+    mounted(){
+    let vm = this;
+	  document.onkeydown = function (event) {
+	       var e = event ? event : (window.event ? window.event : null);
+	        if (e.keyCode == 13) {
+	            vm.handleSubmit2();
+	        }
+	    }    
+    	
+    	
     }
+    
+    
   }
 
 </script>

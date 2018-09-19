@@ -35,10 +35,10 @@
 		    <el-table-column  prop="regAdd" label="注册区域">
 			</el-table-column>
 		    <el-table-column  prop="status" label="状态">
-			</el-table-column>			
-		    <el-table-column  prop="yunbeiBalance" label="云贝余额">
+			</el-table-column>		
+		    <el-table-column  prop="amountYuncoin" label="云贝余额">
 			</el-table-column>	
-		    <el-table-column  prop="balance" label="账号余额">
+		    <el-table-column  prop="amountRmb" label="账号余额（元）">
 			</el-table-column>		    
 		    <el-table-column  prop="registerTime" width="200" label="注册时间">
 			</el-table-column>			        
@@ -106,7 +106,10 @@ import {userList} from '@/common/service/user.js'
 		this._userList(this.searchForm);     	
      },
 	 handleClick(row){
-	 	 this.$router.push({ path: '/userdetail' });
+	 	
+	 	sessionStorage.setItem('userDetail',JSON.stringify(row));
+	 	
+	 	this.$router.push({ path: '/userdetail' });
 	 },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
