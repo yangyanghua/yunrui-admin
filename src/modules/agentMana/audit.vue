@@ -16,9 +16,6 @@
 			  
 	          </el-form-item> 	          
 	          
-
-	          
-	          
 	          <el-form-item>
 	            <el-button type="primary" size="medium" @click="search" icon="el-icon-search" >筛选</el-button>
 <!--	            <el-button size="medium"  icon="el-icon-refresh">重置</el-button>-->
@@ -26,8 +23,9 @@
 	        </el-form>			
 		</div>
 		<div class="tableContent">
-		  <el-table :data="tableData" border style="width: 90%">
+		  <el-table :data="tableData" border style="width: 100%">
 		    <el-table-column  prop="id" width="80" label="ID" >
+
 		    </el-table-column>
 		    <el-table-column  prop="realname" label="姓名">
 			</el-table-column>			

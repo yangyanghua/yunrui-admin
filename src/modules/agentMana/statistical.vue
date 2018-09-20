@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<div class="formContent" style="margin-top: 20px;width: 90%;" >
+		<div class="formContent" style="margin: 20px 0;width: 100%;" >
 				<el-menu :default-active="searchForm.type" class="el-menu-demo" mode="horizontal" @select="handleSelect">
 				  <el-menu-item index="1">年度统计</el-menu-item>
 				  <el-menu-item index="2">季度统计</el-menu-item>
@@ -8,8 +8,11 @@
 				</el-menu>		
 		</div>
 		<div class="tableContent">
-		  <el-table :data="tableData" border style="width: 90%">
+		  <el-table :data="tableData" border style="width: 100%">
 		    <el-table-column  prop="id" width="80" label="ID" >
+		      <template slot-scope="scope">
+		        <p>{{scope.row.id.split('_')[0]}}</p>
+		      </template>			    	
 		    </el-table-column>
 		    <el-table-column  prop="activeUserCount" label="活跃用户数">
 			</el-table-column>
@@ -27,11 +30,11 @@
 			</el-table-column>					
 		    <el-table-column  prop="statusRemark" label="状态">
 			</el-table-column>			        
-		    <el-table-column  label="操作">
+		    <!--<el-table-column  label="操作">
 		      <template slot-scope="scope">
 		        <el-button @click="handleClick(scope.row.id)" type="text" size="small">查看详情</el-button>
 		      </template>		    		
-		    </el-table-column>
+		    </el-table-column>-->
 		  </el-table>			
 		</div>
 	   <div class="pagi">

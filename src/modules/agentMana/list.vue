@@ -3,7 +3,7 @@
 		<!--<div class="tap">
 			<el-button>导出用户</el-button>
 		</div>-->
-		<div class="formContent" style="margin-top: 20px;" >
+		<div class="formContent" style="margin: 20px 0;" >
 	        <el-form :inline="true" :model="searchForm" class="demo-form-inline">   
 
 	          <el-form-item label="关键字"> 
@@ -16,7 +16,7 @@
 	        </el-form>			
 		</div>
 		<div class="tableContent">
-		  <el-table :data="tableData" border style="width: 90%">
+		  <el-table :data="tableData" border style="width: 100%">
 		    <el-table-column  prop="id" width="80" label="ID" >
 		    </el-table-column>
 		    <el-table-column  prop="realname" label="姓名">

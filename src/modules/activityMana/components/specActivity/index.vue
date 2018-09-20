@@ -16,7 +16,7 @@
 	        </el-form>			
 		</div>
 		<div class="tableContent">
-		  <el-table :data="tableData" border style="width: 90%">		    
+		  <el-table :data="tableData" border style="width: 100%">		    
 		    <el-table-column  prop="id" label="ID" width="80" >	
 			</el-table-column>
 		    <el-table-column  prop="name" label="展会名称">
@@ -37,7 +37,16 @@
 			        <p >{{scope.row.address.province}}，{{scope.row.address.city}}，{{scope.row.address.district}}，{{scope.row.address.details}}</p>
 		      </template>			    	
 			</el-table-column>
-		    <el-table-column  prop="enterPay" label="参展费（云贝）" >
+			
+		    	
+			
+			
+		    <el-table-column  label="参展费" >
+		    	
+			  <template slot-scope="scope">
+		        <p>{{scope.row.enterPay}}（<span>{{scope.row.enterPayCurrency}}</span>）</p>
+		      </template>		    	
+		    	
 			</el-table-column>			
 		    <el-table-column  prop="startTime" label="时间" width="180">
 			</el-table-column>	

@@ -63,6 +63,10 @@ export const financeTotalInOut = httpService + 'yr/api/admin/finance/record/tota
 export const financeTrade = httpService + 'yr/api/admin/finance/trade/page';//获取所有交易
 
 
+//销售管理
+export const allOrderList = httpService + '/yr/api/admin/order/page';//获取所有订单
+
+
 
 
 

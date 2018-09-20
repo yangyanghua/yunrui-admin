@@ -23,7 +23,7 @@
 			<span class="balance">总支出：{{inOutInfo[1]}}元</span>
 		</div>
 		<div class="tableContent">
-			<el-table :data="tableData" border style="width: 90%">
+			<el-table :data="tableData" border style="width: 100%">
 				<el-table-column prop="id" width="80" label="ID">
 				</el-table-column>
 				<el-table-column prop="tradeNo" label="交易编号">

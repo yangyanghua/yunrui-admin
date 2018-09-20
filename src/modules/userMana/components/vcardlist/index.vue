@@ -50,6 +50,49 @@
 		    </el-pagination>	   	
 	   </div>
 
+			<el-dialog title="名片详情" :visible.sync="dialogVisible" width="40%">
+	
+				<el-form ref="card" :model="card" label-width="160px">
+					<el-form-item label="姓名">
+						<p class="keyVal">{{card.realname}}</p>
+					</el-form-item>
+					<el-form-item label="职位">
+						<p class="keyVal">{{card.companyMain}}</p>
+					</el-form-item>	
+					<el-form-item label="公司名称">
+						<p class="keyVal">{{card.companyName}}</p>
+					</el-form-item>
+					<el-form-item label="公司地址">
+						<p class="keyVal">{{card.companyAddress.province}}{{card.companyAddress.city}}{{card.companyAddress.district}}{{card.companyAddress.details}}</p>
+					</el-form-item>
+					<el-form-item label="联系电话">
+						<p class="keyVal">{{card.phone}}</p>
+					</el-form-item>
+					<el-form-item label="电子邮箱">
+						<p class="keyVal">{{card.email}}</p>
+					</el-form-item>
+					<el-form-item label="logo">
+						<img class="flyImg" :src="card.logo" />
+					</el-form-item>
+	
+					<el-form-item label="二维码">
+						<img class="flyImg" :src="card.qrcode" alt="二维码" />
+					</el-form-item>
+					<el-form-item label="模板">
+						<img class="flyImg" :src="card.template" alt="模板"  />
+					</el-form-item>
+					<el-form-item label="创建时间">
+						<p class="keyVal">{{card.createTime}}</p>
+					</el-form-item>					
+					<el-form-item label="有效期至">
+						<p class="keyVal">{{card.servExpireTime}}</p>
+					</el-form-item>
+				</el-form>
+	
+				<span slot="footer" class="dialog-footer">
+			    <el-button @click="dialogVisible = false">关闭</el-button>
+			  </span>
+			</el-dialog>
 
 	</section>
 </template>
@@ -61,8 +104,12 @@ import {cardList} from '@/common/service/user.js'
   export default {
     data() {
       return {
+      	dialogVisible:false,
       	regdate:'',
       	total:0,
+      	card:{
+      		companyAddress:{},
+      	},
       	searchForm:{
       		page:0,
       		size:10,
@@ -95,7 +142,8 @@ import {cardList} from '@/common/service/user.js'
 		this._cardList(this.searchForm);     	
      },
 	 handleClick(row){
-	 	// this.$router.push({ path: '/userdetail' });
+	 	this.card = row;
+	 	this.dialogVisible = true;
 	 },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
@@ -121,6 +169,17 @@ import {cardList} from '@/common/service/user.js'
 		line-height: 60px;
 		width: 100%;
 	}
+	.keyVal{
+		margin: 0;
+		padding-top: 7px;
+		font-size: 16px;
+		line-height: 23px;
+	}
+	.flyImg {
+		margin-right: 20px;
+		width: 120px;
+		height: 120px;
+	}	
 	.el-table__header{
 		text-align: center;
 	}

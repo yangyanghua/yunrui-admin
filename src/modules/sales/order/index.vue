@@ -17,24 +17,37 @@
 
 		<div class="tableContent">
 			<el-table :data="tableData" border style="width: 100%">
-				<el-table-column prop="id" width="80" label="ID">
+				<el-table-column prop="createTime" width="100" label="创建时间">
 				</el-table-column>
-				<el-table-column prop="tradeNo" width="200" label="交易编号">
+				<el-table-column prop="tradeNo" width="150" label="交易编号">
 				</el-table-column>
-				<el-table-column prop="amount" label="金额">
+				<el-table-column prop="amount" label="交易金额">
 				</el-table-column>
-				<el-table-column prop="balance" label="余额">
+				<el-table-column  label="传单ID">
+			      <template slot-scope="scope">
+			        <p>{{scope.row.leaflet.leafletId}}</p>
+			      </template>						
 				</el-table-column>
-				<el-table-column prop="areaCode" label="城市代码">
+				<el-table-column label="传单名称"  width="300" >
+			      <template slot-scope="scope">
+			        <p>{{scope.row.leaflet.title}}</p>
+			      </template>						
 				</el-table-column>				
-				<el-table-column prop="type" label="业务类型">
+				<el-table-column  label="传单图片" width="100" >
+			      <template slot-scope="scope">
+			      	<img  :src="scope.row.leaflet.image" style="width: 60px;" />
+			      </template>						
 				</el-table-column>
+				<el-table-column  label="买家ID">
+			      <template slot-scope="scope">
+			        <p>{{scope.row.buyer.id}}</p>
+			      </template>						
+				</el-table-column>	
 				<el-table-column prop="statusRemark" label="状态">
 				</el-table-column>				
-				<el-table-column prop="remark" label="交易备注">
+				<el-table-column prop="remark" label="备注">
 				</el-table-column>
-				<el-table-column prop="createTime" width="200" label="创建时间">
-				</el-table-column>
+
 				<!--<el-table-column  label="操作">
 		      <template slot-scope="scope">
 		        <el-button @click="handleClick(scope.row)" type="text" size="small">查看详情</el-button>
@@ -52,7 +65,7 @@
 
 <script>
 	
-	import { financeTrade } from '@/common/service/financial.js'
+	import { allOrderList } from '@/common/service/sales.js'
 	
 
 
@@ -63,6 +76,7 @@
 				searchForm: {
 					page: 0,
 					size: 10,
+					type:'0', 
 					status:'',		
 				},
 				currentPage4: 1,
@@ -77,23 +91,23 @@
 		    handleSelect(key, keyPath) {
 
 		        this.searchForm.status = key;
-		        this._financeTrade(this.searchForm);
+		        this._allOrderList(this.searchForm);
 		    },		
 
 			handleSizeChange(val) {
 
 				this.searchForm.size = val
 				this.searchForm.page = 0;
-				this._financeTrade(this.searchForm);
+				this._allOrderList(this.searchForm);
 			},
 			handleCurrentChange(val) {
 				this.searchForm.page = val - 1;
-				this._financeTrade(this.searchForm);
+				this._allOrderList(this.searchForm);
 			},
 
-			_financeTrade(opt){
+			_allOrderList(opt){
 				
-				financeTrade(opt).then((res)=>{
+				allOrderList(opt).then((res)=>{
 					this.tableData = res.content;
 					this.total = res.totalElements;
 				}).catch((res)=>{
@@ -107,7 +121,7 @@
 			
 			init(){
 
-				this._financeTrade(this.searchForm);
+				this._allOrderList(this.searchForm);
 			}
 			
 		},
