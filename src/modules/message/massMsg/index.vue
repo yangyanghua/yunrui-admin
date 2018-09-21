@@ -60,6 +60,9 @@
 <script>
 	import { sendMessage } from '@/common/service/message.js'
 	import { getArea, upload } from '@/common/service/activityMana.js'
+	import {httpService} from '@/common/http/http.js';
+
+	
 	export default {
 		data() {
 			return {
@@ -136,7 +139,7 @@
 				this.uploading = true;
 				upload(fd).then((res) => {
 
-					this.ruleForm.image = 'http://outmao.com:8088/yr/' + res[0];
+					this.ruleForm.image = httpService + res[0];
 					this.uploading = false;
 				}).catch((res) => {
 					this.uploading = false;

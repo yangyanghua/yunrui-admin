@@ -5,14 +5,16 @@ let httpService = '';
 var currentHost = location.host;
 
 
-//if (currentHost == 'localhost:8090'||currentHost == '192.168.9.243:8080' || currentHost == '192.168.9.218:8380') {
-//		httpService='http://outmao.com:8088';
-//
-//} else if (currentHost == '132123') {
-//httpService = '132123'; //測試/預生產
-//} else if (currentHost == '132123') {
-//httpService = '132123'; //生產
-//}
+if (currentHost == 'localhost:8090') {
+		
+		httpService='/api';
+
+
+} else{
+	
+	httpService = 'http://'+ currentHost; 
+
+}
 
 
 

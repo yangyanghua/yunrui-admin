@@ -170,8 +170,9 @@
 
 <script>
 
-import {getSpecialActivity,getArea,upload,addSpecialActivity} from '@/common/service/activityMana.js'
-	
+import {getSpecialActivity,getArea,upload,addSpecialActivity} from '@/common/service/activityMana.js';
+import {httpService} from '@/common/http/http.js';
+
   export default {
     data() {
       return {
@@ -330,7 +331,7 @@ import {getSpecialActivity,getArea,upload,addSpecialActivity} from '@/common/ser
 			
 			let img = {
 				name:'xxx',
-				url:'http://outmao.com:8088/yr/'+res[0]
+				url:httpService+res[0]
 			};
 			
 			this.ruleForm.imagesList.push(img);
